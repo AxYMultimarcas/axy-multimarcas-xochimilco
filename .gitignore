@@ -1,0 +1,258 @@
+<!--
+  Archivo: index.html
+  Proyecto: AxY Multi-Marcas Xochimilco
+  Instrucciones: Copia este archivo como `index.html` y súbelo a cualquier hosting (Netlify, Vercel, GitHub Pages, un hosting tradicional o cPanel).
+  - Reemplaza las imágenes de ejemplo en /assets/ por tus fotos reales.
+  - Sube tus catálogos PDF y ajusta los enlaces en la sección "Catálogos".
+  - El botón "Comprar" envía un mensaje de WhatsApp al número +52 729 880 6173 con el producto seleccionado.
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AxY Multi-Marcas Xochimilco — En AxY pensamos en ti</title>
+  <meta name="description" content="AxY Multi-Marcas Xochimilco - Calzado, Colchas, Catálogos y Ofertas. Compra directo por WhatsApp.">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    :root{
+      --morado:#6b2e8a;
+      --rosa:#f29ec2;
+      --blanco:#ffffff;
+      --gris-osc:#4b4b4b;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:var(--gris-osc); background:linear-gradient(180deg, #fff 0%, #fff 60%);}
+
+    /* Header */
+    header{background:linear-gradient(90deg,var(--morado), #7b3aa6); color:var(--blanco); padding:18px 16px; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:var(--blanco);display:flex;align-items:center;justify-content:center;color:var(--morado);font-weight:700}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:13px;opacity:0.95}
+    .nav{display:flex;gap:10px;align-items:center}
+    .btn-contact{background:var(--rosa);color:var(--morado);border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;padding:34px 16px;align-items:center}
+    .hero-left{padding:12px}
+    .hero h2{font-size:28px;margin:0 0 8px;color:var(--morado)}
+    .hero p{margin:0 0 16px;color:#222}
+    .hero .cta{display:flex;gap:12px;align-items:center}
+    .cta .btn{background:var(--morado);color:var(--blanco);border:none;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+    .cta .btn.secondary{background:transparent;border:2px solid var(--morado);color:var(--morado)}
+
+    .hero-right{background:linear-gradient(180deg, rgba(242,158,194,0.12), rgba(107,46,138,0.06));border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
+    .product-preview{background:var(--blanco);border-radius:10px;padding:12px;display:flex;gap:12px;align-items:center}
+    .product-preview img{width:84px;height:84px;object-fit:cover;border-radius:8px;border:1px solid #eee}
+    .product-preview .info{flex:1}
+    .tag{background:var(--rosa);color:var(--morado);padding:6px 8px;border-radius:8px;font-weight:700;font-size:13px}
+
+    /* Sections */
+    main{padding:18px}
+    .section{margin-bottom:28px}
+    .section h3{margin:0 0 12px;color:var(--morado)}
+
+    /* Catalogs */
+    .catalogs{display:flex;gap:12px;flex-wrap:wrap}
+    .catalog-card{background:linear-gradient(180deg,var(--blanco), #fff);border:1px solid #eee;padding:12px;border-radius:10px;width:220px;display:flex;flex-direction:column;gap:8px}
+    .catalog-card a{font-weight:700;color:var(--morado);text-decoration:none}
+
+    /* Products grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .card{background:var(--blanco);border-radius:10px;padding:12px;border:1px solid #f0f0f0;display:flex;flex-direction:column}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+    .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .price{font-weight:800;color:var(--morado)}
+    .buy{margin-top:10px;background:linear-gradient(90deg,var(--rosa),#f4c4dc);border:none;padding:10px;border-radius:10px;font-weight:800;cursor:pointer}
+
+    /* Floating WhatsApp */
+    .whatsapp-float{position:fixed;right:16px;bottom:16px;background:linear-gradient(90deg,var(--morado),#7b3aa6);color:var(--blanco);border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 6px 20px rgba(107,46,138,0.15);cursor:pointer}
+
+    footer{padding:18px;text-align:center;color:#666;background:#fff;margin-top:26px;border-top:1px solid #f2f2f2}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-right{order:2}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">AxY</div>
+      <div>
+        <h1>AxY Multi-Marcas Xochimilco</h1>
+        <p>En AxY pensamos en ti</p>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-contact" onclick="openWhatsApp()">WhatsApp: 729 880 6173</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h2>Calzado • Colchas • Catálogos • Ofertas</h2>
+      <p>Compra directo por WhatsApp. Explora nuestros catálogos digitales y encuentra piezas únicas y ofertas especiales.</p>
+      <div class="cta">
+        <button class="btn" onclick="openSection('catalogs')">Ver catálogos</button>
+        <button class="btn secondary" onclick="openSection('products')">Ver productos</button>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:#444">Colores: morado • rosa • blanco — Atención rápida por WhatsApp</p>
+    </div>
+    <aside class="hero-right">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div class="tag">Modelo 1404</div>
+          <div style="font-weight:700">Calzado destacado</div>
+        </div>
+        <div style="font-size:13px;opacity:0.9">Disponible</div>
+      </div>
+
+      <div class="product-preview">
+        <img src="https://images.unsplash.com/photo-1519741491322-3d2b6c8b3e5f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Calzado AxY">
+        <div class="info">
+          <div style="font-weight:800">Modelo 1404 — Elegante y cómodo</div>
+          <div style="font-size:13px;color:#666;margin-top:6px">Precio: $799 (ejemplo)</div>
+          <button class="buy" onclick="buyProduct('Modelo 1404 - Calzado')">Comprar por WhatsApp</button>
+        </div>
+      </div>
+
+      <small style="opacity:0.8">También disponible: Colchas en oferta y catálogos PDF descargables</small>
+    </aside>
+  </section>
+
+  <main>
+    <section id="catalogs" class="section">
+      <h3>Catálogos PDF</h3>
+      <div class="catalogs">
+        <!-- Reemplaza href con la ruta real al PDF dentro de tu hosting -->
+        <div class="catalog-card">
+          <div style="font-weight:800">Catálogo Calzado - 2025</div>
+          <div style="font-size:13px;color:#666">20 páginas — Descarga y comparte</div>
+          <a href="#" onclick="alert('Reemplaza este enlace con tu PDF subido')">Ver / Descargar</a>
+        </div>
+
+        <div class="catalog-card">
+          <div style="font-weight:800">Catálogo Colchas - 2025</div>
+          <div style="font-size:13px;color:#666">Catálogo matrimonial y individual</div>
+          <a href="#" onclick="alert('Reemplaza este enlace con tu PDF subido')">Ver / Descargar</a>
+        </div>
+
+        <div class="catalog-card">
+          <div style="font-weight:800">Promociones y Ofertas</div>
+          <div style="font-size:13px;color:#666">Ofertas vigentes por tiempo limitado</div>
+          <a href="#" onclick="alert('Reemplaza este enlace con tu PDF subido')">Ver / Descargar</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h3>Productos</h3>
+      <div class="grid">
+        <!-- Card 1 - Calzado -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Calzado modelo 1404">
+          <div style="margin-top:10px;font-weight:800">Calzado Modelo 1404</div>
+          <div style="font-size:13px;color:#666;margin-top:6px">Material sintético, suela flexible</div>
+          <div class="meta">
+            <div class="price">$799</div>
+            <div style="font-size:13px;color:#888">En stock</div>
+          </div>
+          <button class="buy" onclick="buyProduct('Calzado Modelo 1404')">Comprar</button>
+        </div>
+
+        <!-- Card 2 - Colcha -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1601047130091-6b6b6f2f4b66?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Colcha matrimonial">
+          <div style="margin-top:10px;font-weight:800">Colcha Matrimonial - Confort</div>
+          <div style="font-size:13px;color:#666;margin-top:6px">Tamaño matrimonial - suave al tacto</div>
+          <div class="meta">
+            <div class="price">$1,599</div>
+            <div style="font-size:13px;color:#888">Pocas piezas</div>
+          </div>
+          <button class="buy" onclick="buyProduct('Colcha Matrimonial - Confort')">Comprar</button>
+        </div>
+
+        <!-- Card 3 - Oferta -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581579182500-1a3d3f2f2f2f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Oferta">
+          <div style="margin-top:10px;font-weight:800">Oferta Especial: Combo</div>
+          <div style="font-size:13px;color:#666;margin-top:6px">Calzado + colcha con descuento</div>
+          <div class="meta">
+            <div class="price">$1,999</div>
+            <div style="font-size:13px;color:#888">Hasta agotar existencias</div>
+          </div>
+          <button class="buy" onclick="buyProduct('Oferta Combo - Calzado + Colcha')">Comprar</button>
+        </div>
+
+        <!-- Card 4 - Ejemplo más -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1526178615319-2b0b6b7a9a1e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Producto">
+          <div style="margin-top:10px;font-weight:800">Calzado Deportivo</div>
+          <div style="font-size:13px;color:#666;margin-top:6px">Ligero y resistente</div>
+          <div class="meta">
+            <div class="price">$899</div>
+            <div style="font-size:13px;color:#888">En stock</div>
+          </div>
+          <button class="buy" onclick="buyProduct('Calzado Deportivo - AxY')">Comprar</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="offers" class="section">
+      <h3>Ofertas</h3>
+      <p style="margin-top:6px">Revisa nuestras promociones temporales. Los precios son de ejemplo; ajusta en tu backend o directamente en este archivo.</p>
+      <div style="margin-top:10px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="background:linear-gradient(90deg,var(--rosa), #f9dbe6);padding:12px;border-radius:10px;min-width:220px">
+          <strong>Descuento 20%</strong>
+          <div style="font-size:13px;color:#444;margin-top:8px">En la 1ra compra con código: BIENVENIDA</div>
+        </div>
+
+        <div style="background:linear-gradient(90deg,var(--morado), #7b3aa6);color:var(--blanco);padding:12px;border-radius:10px;min-width:220px">
+          <strong>Envío gratis</strong>
+          <div style="font-size:13px;margin-top:8px">Compras mayores a $2,000</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="whatsapp-float" onclick="openWhatsApp()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.8 11.2c0 5.4-4.4 9.8-9.8 9.8-1.7 0-3.3-.4-4.7-1.2L3 21l1.4-4.9C3 14.6 2.6 13 2.6 11.2 2.6 5.8 6.9 1.4 12.3 1.4c5.4 0 9.8 4.4 9.8 9.8z" fill="white"/></svg>
+    <div style="font-weight:800">WhatsApp</div>
+  </div>
+
+  <footer>
+    <div style="font-weight:700">AxY Multi-Marcas Xochimilco</div>
+    <div style="font-size:13px;margin-top:6px">WhatsApp: 729 880 6173 • En AxY pensamos en ti</div>
+  </footer>
+
+  <script>
+    // Número en formato internacional (sin espacios): +52 7298806173
+    const WA_NUMBER = '527298806173';
+
+    function openWhatsApp(){
+      const url = `https://wa.me/${WA_NUMBER}`;
+      window.open(url, '_blank');
+    }
+
+    function buyProduct(productName){
+      const text = encodeURIComponent(`Hola! Me interesa el producto: ${productName} \nNombre: \nDirección (opcional): \n¿Está disponible?`);
+      const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+      window.open(url, '_blank');
+    }
+
+    function openSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  </script>
+
+</body>
+</html>
